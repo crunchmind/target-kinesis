@@ -141,11 +141,11 @@ def buffer_record(record):
 def deliver_records(config, records):
     is_firehose = config.get("is_firehose", False)
     if is_firehose:
-        client = firehose_setup_client(config)
+        client = firehose_setup_client()
         stream_name = config.get("stream_name", "missing-stream-name")
         firehose_deliver(client, stream_name, records)
     else:
-        client = kinesis_setup_client(config)
+        client = kinesis_setup_client()
         stream_name = config.get("stream_name", "missing-stream-name")
         partition_key = config.get("partition_key", "id")
         kinesis_deliver(client, stream_name, partition_key, records)

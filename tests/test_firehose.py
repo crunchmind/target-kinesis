@@ -92,5 +92,5 @@ def test_deliver_raise_on_nonexistent_stream():
 @mock_kinesis
 def test_setup_client_firehose():
     config = {}
-    client = firehose_setup_client(config)
+    client = firehose_setup_client()
     assert client.__class__.__name__ == "Firehose"
