@@ -54,6 +54,7 @@ def handle_record(o, schemas, line, config, validators):
         raise Exception(
             "A record for stream {} was encountered before a corresponding schema".format(o['stream']))
     validate_record(o['stream'], o['record'], schemas, validators)
+    o['record']['stream'] = o['stream']
     buffer_record(o['record'])
 
 
