@@ -32,9 +32,6 @@ Here is an example of required configuration:
 ```
 {
   "stream_name": "YOUR_KINESIS_STREAM_NAME",
-  "aws_access_key_id": "YOUR_AWS_ACCESS_KEY_ID",
-  "aws_secret_access_key": "YOUR_AWS_SECRET_ACCESS_KEY",
-  "region": "YOUR_AWS_REGION",
   "is_firehose": true,
   "record_chunks": 10,
   "data_chunks": 1000

@@ -267,7 +267,7 @@ def test_main_with_firehose(mocker):
     mocker.patch('argparse.ArgumentParser.parse_args',
                  return_value=argparse.Namespace(config="sample.config.json"))
     mocker.patch(
-        'builtins.open', mock_open(read_data='{"region_name": "us-east-1", "aws_access_key_id": "FAKE_AWS_ACCESS_KEY_ID", "aws_secret_access_key": "FAKE_AWS_SECRET_ACCESS_KEY", "is_firehose": true, "record_chunks": 1, "data_chunks": 1 }'))
+        'builtins.open', mock_open(read_data='{"is_firehose": true, "record_chunks": 1, "data_chunks": 1 }'))
 
     # Mock AWS methods
     mocked_setup = mocker.patch('target_kinesis.target.firehose_setup_client')
@@ -288,7 +288,7 @@ def test_main_with_kinesis(mocker):
     mocker.patch('argparse.ArgumentParser.parse_args',
                  return_value=argparse.Namespace(config="sample.config.json"))
     mocker.patch(
-        'builtins.open', mock_open(read_data='{"region_name": "us-east-1", "aws_access_key_id": "FAKE_AWS_ACCESS_KEY_ID", "aws_secret_access_key": "FAKE_AWS_SECRET_ACCESS_KEY", "is_firehose": false, "record_chunks": 1, "data_chunks": 1}'))
+        'builtins.open', mock_open(read_data='{"is_firehose": false, "record_chunks": 1, "data_chunks": 1}'))
 
     # Mock AWS methods
     mocked_setup = mocker.patch('target_kinesis.target.kinesis_setup_client')
@@ -309,7 +309,7 @@ def test_main_deliver_last_records(mocker):
     mocker.patch('argparse.ArgumentParser.parse_args',
                  return_value=argparse.Namespace(config="sample.config.json"))
     mocker.patch(
-        'builtins.open', mock_open(read_data='{"region_name": "us-east-1", "aws_access_key_id": "FAKE_AWS_ACCESS_KEY_ID", "aws_secret_access_key": "FAKE_AWS_SECRET_ACCESS_KEY", "is_firehose": true, "record_chunks": 100, "data_chunks": 100000 }'))
+        'builtins.open', mock_open(read_data='{"is_firehose": true, "record_chunks": 100, "data_chunks": 100000 }'))
 
     # Mock AWS methods
     mocked_setup = mocker.patch('target_kinesis.target.firehose_setup_client')

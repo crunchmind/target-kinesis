@@ -1,19 +1,9 @@
 import boto3
 import json
-import singer
 
 
-def kinesis_setup_client(config):
-    aws_access_key_id = config.get("aws_access_key_id")
-    aws_secret_access_key = config.get("aws_secret_access_key")
-    region_name = config.get("region_name", "eu-west-2")
-
-    return boto3.client(
-        'kinesis',
-        aws_access_key_id=aws_access_key_id,
-        aws_secret_access_key=aws_secret_access_key,
-        region_name=region_name
-    )
+def kinesis_setup_client():
+    return boto3.client('kinesis')
 
 
 def kinesis_deliver(client, stream_name, partition_key, records):
