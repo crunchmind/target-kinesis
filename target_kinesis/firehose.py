@@ -14,9 +14,7 @@ def firehose_deliver(client, stream_name, records):
     if isinstance(records, dict):
         raise Exception("Single record given, array is required")
 
-    for record in records:
-        response = client.put_record(
-            DeliveryStreamName=stream_name,
-            Record={'Data': json.dumps(record)}
-        )
+    records = list(map(lambda x: {'Data': json.dumps(x)}, records))
+
+    response = client.put_record_batch(DeliveryStreamName=stream_name, Records=records)
     return response
