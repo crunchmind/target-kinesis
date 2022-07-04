@@ -44,7 +44,7 @@ def test_deliver_single_record():
     data = [{"example": "content"}]
 
     response = firehose_deliver(client, FAKE_STREAM_NAME, data)
-    assert response['ResponseMetadata']['HTTPStatusCode'] is 200
+    assert response['ResponseMetadata']['HTTPStatusCode'] == 200
 
 
 @mock_kinesis
@@ -58,7 +58,7 @@ def test_deliver_multiple_records():
     ]
 
     response = firehose_deliver(client, FAKE_STREAM_NAME, data)
-    assert response['ResponseMetadata']['HTTPStatusCode'] is 200
+    assert response['ResponseMetadata']['HTTPStatusCode'] == 200
 
 
 @mock_kinesis
